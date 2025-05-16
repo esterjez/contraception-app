@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Contraceptive Insights</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Contraceptive Insights</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('adolescents') }}">Adolescents</a></li>
+                <li><a href="{{ url_for('regions') }}">Regions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Welcome to Informed Choices</h2>
+        <p>
+        Explore up-to-date, research-backed data on contraceptive use and sexual health among Slovak adolescents and women. Our goal is to provide clear insights to support informed decisions about reproductive health.
+        </p>
+        <p>
+        From detailed charts and trends to accessible explanations, you’ll find everything you need to understand contraceptive methods, usage patterns, and important public health indicators.
+        </p>
+        <p>
+        Whether you are an educator, policymaker, health professional, or simply curious, this resource empowers you with trustworthy data and analysis.
+        </p>
+        <div class="button-container">
+            <a href="{{ url_for('adolescents') }}" class="figma-btn">Adolescents</a>
+            <a href="{{ url_for('regions') }}" class="figma-btn">Regions</a>
+          </div>          
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ester Jezberova</p>
+    </footer>
+</body>
+</html>

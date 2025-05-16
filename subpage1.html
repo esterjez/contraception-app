@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Contraceptive Insights</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Contraceptive Insights</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('adolescents') }}">Adolescents</a></li>
+                <li><a href="{{ url_for('regions') }}">Regions</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Contraceptive Use Among Slovak Adolescents</h2>
+
+        <section style="margin-bottom: 2rem;">
+            <p>
+            This chart presents the self-reported use of condoms and birth control pills among Slovak adolescents who have had sexual intercourse, based on survey data from 2014 and 2018. 
+            The results show not only the prevalence of contraceptive use, but also the percentage of respondents who reported not using these methods, or were unsure about their usage ("don’t know").
+            </p>
+        </section>
+
+        <section style="margin-bottom: 2rem;">
+            <h3>Trends in Contraceptive Use</h3>
+            <p>
+            Condom use remains the most commonly reported method of contraception, with a noticeable increase between 2014 and 2018. This could reflect greater awareness, better accessibility, or improved sex education during that period. 
+            Meanwhile, the use of birth control pills also increased slightly, but a significant proportion of adolescents either did not use this method or were unsure whether they did.
+            </p>
+        </section>
+
+        <section style="margin-bottom: 2rem; background-color: #f0f8ff; padding: 1rem; border-left: 4px solid #007bff;">
+            <h3>Important Insight</h3>
+            <p style="font-style: italic; color: #003366;">
+            The relatively high number of “don’t know” responses—especially for the pill—highlights a potential gap in understanding contraceptive methods and how they are used. 
+            This suggests a need for more comprehensive and accessible sexual education that equips young people with accurate information to make informed decisions about their reproductive health.
+            </p>
+        </section>
+
+        <section style="margin-bottom: 3rem;">
+            <h3>Why This Matters</h3>
+            <p>
+            Understanding these trends is essential for educators, policymakers, and public health professionals aiming to support safe and informed sexual behavior among adolescents. 
+            Better education and resources can lead to healthier choices and reduce risks associated with unintended pregnancies and sexually transmitted infections.
+            </p>
+        </section>
+
+        <canvas id="contraceptiveBarChart" width="400" height="250"></canvas>
+        <script>
+            const contraceptiveBarCtx = document.getElementById('contraceptiveBarChart').getContext('2d');
+            const contraceptiveBarChart = new Chart(contraceptiveBarCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['2014', '2018'],
+                    datasets: [
+                        {
+                            label: 'Condom - Yes',
+                            data: [73.5, 78.2],
+                            backgroundColor: 'rgba(54, 162, 235, 0.7)'
+                        },
+                        {
+                            label: 'Condom - No',
+                            data: [20.1, 17.3],
+                            backgroundColor: 'rgba(54, 162, 235, 0.3)'
+                        },
+                        {
+                            label: 'Condom - Don\'t Know',
+                            data: [6.4, 4.5],
+                            backgroundColor: 'rgba(54, 162, 235, 0.1)'
+                        },
+                        {
+                            label: 'Pill - Yes',
+                            data: [50.2, 55.7],
+                            backgroundColor: 'rgba(255, 99, 132, 0.7)'
+                        },
+                        {
+                            label: 'Pill - No',
+                            data: [30.8, 31.2],
+                            backgroundColor: 'rgba(255, 99, 132, 0.3)'
+                        },
+                        {
+                            label: 'Pill - Don\'t Know',
+                            data: [19.0, 13.1],
+                            backgroundColor: 'rgba(255, 99, 132, 0.1)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Contraceptive Use Among Slovak Adolescents Who Had Sex (2014 & 2018)'
+                        },
+                        legend: {
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Percentage (%)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Year'
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+        <br>
+
+        <h2>Sexual Activity Among Slovak Adolescents</h2>
+        <p>
+            This chart shows the percentage of Slovak adolescents—divided by gender—who reported having had sexual intercourse in 2014 and 2018. The results reveal a slight decline in reported sexual activity over time for both boys and girls.
+        </p>
+        <p>
+            In 2014, about 18.3% of boys and 14.2% of girls reported having had sex. By 2018, these numbers decreased to 17.0% for boys and 11.3% for girls. This shift may reflect changes in behavior, education, or attitudes toward sexuality and relationships among adolescents.
+        </p>
+        <p>
+            The consistent gender difference—boys reporting higher rates of sexual activity than girls—could also point to cultural or social norms influencing how adolescents respond to sensitive survey questions.
+        </p>
+        <p>
+            Understanding these trends is key to tailoring sexual education programs and ensuring that both boys and girls are equally informed and supported in making healthy choices regarding their sexuality.
+        </p>
+
+        <canvas id="hadSexBarChart" width="700" height="350"></canvas>
+        <script>
+            const ctx = document.getElementById('hadSexBarChart').getContext('2d');
+            const hadSexBarChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['2014', '2018'],
+                    datasets: [
+                        {
+                            label: 'Girls - Had Sex',
+                            data: [14.25, 11.29],
+                            backgroundColor: 'rgba(255, 99, 132, 0.7)'
+                        },
+                        {
+                            label: 'Girls - Did Not Have Sex',
+                            data: [85.75, 88.71],
+                            backgroundColor: 'rgba(255, 99, 132, 0.3)'
+                        },
+                        {
+                            label: 'Boys - Had Sex',
+                            data: [18.29, 17.00],
+                            backgroundColor: 'rgba(54, 162, 235, 0.7)'
+                        },
+                        {
+                            label: 'Boys - Did Not Have Sex',
+                            data: [81.71, 83.00],
+                            backgroundColor: 'rgba(54, 162, 235, 0.3)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Percentage of Adolescents Reporting Sexual Activity by Year and Sex (2014 & 2018)'
+                        },
+                        legend: {
+                            position: 'top',
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Percentage (%)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Year'
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ester Jezberova</p>
+    </footer>
+
+    
+</body>
+</html>

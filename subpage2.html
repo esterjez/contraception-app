@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contraception Map - Slovakia</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Contraceptive Insights</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('adolescents') }}">Adolescents</a></li>
+                <li><a href="{{ url_for('regions') }}">Regions</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Trends in Contraceptive Use Among Women in Slovakia (2011–2023)</h2>
+        <p>
+            This line chart shows the number of Slovak women using different types of contraceptive methods at the end of each year between 2011 and 2023. 
+            The data is grouped into three main categories: <strong>hormonal methods</strong>, <strong>intrauterine devices (IUDs)</strong>, and <strong>other methods</strong>.
+        </p>
+        <p>
+            Hormonal contraception — such as birth control pills, patches, and injections — remains the most commonly used method. 
+            The number of users increased steadily from around 110,000 in 2011 to a peak of nearly 284,000 in 2011, with some fluctuations afterward. 
+            This growth may reflect increased accessibility, better awareness, or a greater trust in hormonal methods over time.
+        </p>
+        <p>
+            Intrauterine device use, though significantly lower in absolute numbers, has also shown a gradual rise. 
+            This suggests growing acceptance of long-acting reversible contraceptives, which are often recommended for their effectiveness and low maintenance.
+        </p>
+        <p>
+            The "other" category includes barrier methods, implants, or less commonly reported methods. 
+            While these numbers are the smallest, the trend still indicates slow but consistent growth, suggesting increasing diversification in contraceptive preferences.
+        </p>
+        <p>
+            These long-term trends highlight how women’s reproductive choices in Slovakia have evolved over time 
+            and may reflect broader societal changes in healthcare access, education, and attitudes toward contraception.
+        </p>
+
+        <canvas id="contraceptionChart" width="800" height="400"></canvas>
+        <script>
+            const ctx = document.getElementById('contraceptionChart').getContext('2d');
+            const contraceptionChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2023','2022','2021','2020','2019','2018','2017','2016','2015','2014','2013','2012','2011'],
+                    datasets: [
+                        {
+                            label: 'hormones',
+                            data: [110994,117123,122160,135666,143811,147755,158841,175430,195664,215472,219004,246740,283110],
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'intrauterine',
+                            data: [35758,36671,35805,37130,38090,38294,40364,41808,45408,47370,47240,50253,54642],
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'other',
+                            data: [3542,3602,3144,3736,4044,4686,5648,5677,5294,6745,6932,7284,9382],
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3
+                        }
+                    ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Women using contraception as of 31.12. in Slovak Republic'
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                title: {
+                                    display: true,
+                                    text: 'Number of Women'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Year'
+                                }
+                            }
+                        }
+                    }
+                });
+        </script>
+        <br>
+
+    </main>
+    <h3>Understanding Hormonal Contraception Trends by Region</h3>
+    <p>
+      This interactive line chart illustrates the changes in <strong>hormonal contraception usage (Indicator 1)</strong> 
+      across different regions over time. Each line represents a region, showing how usage has evolved year by year. 
+      By exploring these trends, you can identify regions with increasing or decreasing use, compare patterns, and gain insights 
+      into regional differences in contraceptive practices.
+    </p>
+    <p>
+      Use the legend to toggle specific regions on or off and hover over points to see detailed values.
+    </p>
+
+    <iframe 
+        src="http://localhost:8501" 
+        width="100%" 
+        height="800px" 
+        style="border:none;"
+        title="Streamlit App">
+    </iframe>
+    <footer>
+        <p>&copy; 2025 Ester Jezberova</p>
+    </footer>
+</body>
+</html>
